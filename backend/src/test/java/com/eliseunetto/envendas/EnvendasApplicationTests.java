@@ -1,0 +1,13 @@
+package com.eliseunetto.envendas;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class EnvendasApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
