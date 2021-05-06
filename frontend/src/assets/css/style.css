@@ -18,6 +18,11 @@ html, body {
     flex: 1 0 auto;
 }
 
+.logo {
+    font-weight: 600;
+    color: var(--color-primary) !important; 
+}
+
 .footer {
     flex-shrink: 0;
     text-align: center;
