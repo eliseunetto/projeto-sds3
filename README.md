@@ -2,6 +2,8 @@
 
 ![Animação](https://user-images.githubusercontent.com/15930456/117609183-e21f0980-b135-11eb-8ebc-b448de3d25c2.gif)
 
+## &#128073; [Acessar Aplicação em produção](https://eliseunetto-envendas.netlify.app/)
+
 ## Sumário
 
 - [Objetivo](#Objetivo)
@@ -20,7 +22,8 @@
   - [Passo 2: "limpar" o projeto ReactJS](#Passo-2-"limpar"-o-projeto-ReactJS)
   - [Passo 3: adicionar Bootstrap e CSS ao projeto](#Passo-3-adicionar-Bootstrap-e-CSS-ao-projeto)
   - [Passo 4: adicionar componentes estáticos básicos](#Passo-4-adicionar-componentes-estáticos-básicos)
-  - [Passo 5: adicionar gráficos estáticos](#Passo-5-adicionar-gráficos-estáticos) -[Passo 6: implantação no Netlify](#Passo-6-implantação-no-Netlify)
+  - [Passo 5: adicionar gráficos estáticos](#Passo-5-adicionar-gráficos-estáticos)
+  - [Passo 6: implantação no Netlify](#Passo-6-implantação-no-Netlify)
 
 ## Objetivo
 
@@ -507,4 +510,6 @@ const options = {
   - Site settings -> Domain Management: (colocar o nome que você quiser)
   - Deploys -> Trigger deploy
 
-  &#128070; [Voltar ao Sumário](#Sumário)
+## &#128073; [Aplicação em produção](https://eliseunetto-envendas.netlify.app/)
+
+&#128070; [Voltar ao Sumário](#Sumário)
