@@ -24,12 +24,22 @@
   - [Passo 4: adicionar componentes estáticos básicos](#Passo-4-adicionar-componentes-estáticos-básicos)
   - [Passo 5: adicionar gráficos estáticos](#Passo-5-adicionar-gráficos-estáticos)
   - [Passo 6: implantação no Netlify](#Passo-6-implantação-no-Netlify)
+- [Integrar o Backend com o Frontend](#Integrar-o-Backend-com-o-Frontend)
+  - [Passo 1: Rotas](#Passo-1-Rotas)
+  - [Passo 2: Página Home e navegações](#Passo-2-Página-Home-e-navegações)
+  - [Passo 3: First request](#Passo-3-First-request)
+  - [Passo 4: DonutChart integration](#Passo-4-DonutChart-integration)
+  - [Passo 5: BarChart integration](#Passo-5-BarChart-integration)
+  - [Passo 6: DataTable integration](#Passo-6-DataTable-integration)
+  - [Passo 7: Pagination](#Passo-7-Pagination)
 
 ## Objetivo
 
 O projeto consiste em uma aplicação web para exibir dados de vendas e desempenho dos vendedores:
 
-- Utilizando as Bibliotecas REact Router DOM e Axios.
+- Desenvolvimento em camadas
+- Aplicando boas práticas de mercado
+- Utilizando as Bibliotecas React Router DOM e Axios.
 - Criando Rotas das páginas.
 - Navegação entre as páginas.
 - Criando as requisições para o banco de dados.
@@ -86,6 +96,8 @@ As principais tecnologias e ferramentas utilizadas foram:
   - Consulta paginada de vendas
   - Consultas agrupadas para gráficos
   - Implantação na nuvem
+
+&#128070; [Voltar ao Sumário](#Sumário)
 
 # Checklist
 
@@ -280,6 +292,8 @@ git subtree push --prefix backend heroku main
 - Salvar os projeto no Github em monorepo
 - Montar o visual estático do front end
 - Publicar o front end no Netlify
+
+&#128070; [Voltar ao Sumário](#Sumário)
 
 # Checklist
 
@@ -511,5 +525,165 @@ const options = {
   - Deploys -> Trigger deploy
 
 ## &#128073; [Aplicação em produção](https://eliseunetto-envendas.netlify.app/)
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+# Integrar o Backend com o Frontend
+
+## Objetivos do projeto para este tópico
+
+- Integrar back end e front end
+- Três pilares do React
+  - Componentes
+  - Props
+  - Estado
+- React Hooks
+  - useState
+  - useEffect
+- Libs
+  - React Router DOM
+  - Axios
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+# Checklist
+
+## Passo 1: Rotas
+
+- Instalar React Router DOM
+
+```
+yarn add react-router-dom
+
+yarn add @types/react-router-dom -D
+```
+
+- Criar páginas Home e Dashboard
+- Criar arquivo de rotas Routes.tsx
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+## Passo 2: Página Home e navegações
+
+```tsx
+<div className="container">
+  <div className="jumbotron">
+    <h1 className="display-4">DSVendas</h1>
+    <p className="lead">
+      Analise o desempenho das suas vendas por diferentes perspectivas
+    </p>
+    <hr />
+    <p>
+      Esta aplicação consiste em exibir um dashboard a partir de dados
+      fornecidos por um back end construído com Spring Boot.
+    </p>
+  </div>
+</div>
+```
+
+- Fazer um link na Home para Dashboard
+
+- Fazer um link na NavBar para Home
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+## Passo 3: First request
+
+- Instalar Axios
+
+```
+yarn add axios
+```
+
+- Definir BASE_URL
+
+- Definir tipo SaleSum
+
+- Definir tipo local ChartData em DonutChart
+
+- Fazer a requisição e tratar os dados
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+## Passo 4: DonutChart integration
+
+```
+Hook: useState
+Manter estado no componente
+```
+
+```
+Hook: useEffect
+Executar algo na instanciação ou destruição do componente, observar estado
+```
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+## Passo 5: BarChart integration
+
+- Definir função auxiliar round:
+
+```tsx
+export const round = (value: number, precision: number) => {
+  var multiplier = Math.pow(10, precision || 0);
+  return Math.round(value * multiplier) / multiplier;
+};
+```
+
+- Definir tipo SaleSuccess
+
+- Definir tipo local ChartData em DonutChart
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+## Passo 6: DataTable integration
+
+- Instalar date-fns ao projeto
+
+```
+yarn add date-fns
+```
+
+- Criar tipos Seller, Sale, SalePage
+- Criar função auxiliar formatLocalDate
+
+```tsx
+export const formatLocalDate = (date: string, pattern: string) => {
+  const dt = new Date(date);
+  const dtDateOnly = new Date(
+    dt.valueOf() + dt.getTimezoneOffset() * 60 * 1000
+  );
+  return format(dtDateOnly, pattern);
+};
+```
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+## Passo 7: Pagination
+
+```
+Props
+Argumentos que um componente React pode receber
+```
+
+- Criar componente Pagination
+
+```tsx
+<div className="row d-flex justify-content-center">
+  <nav>
+    <ul className="pagination">
+      <li className="page-item">
+        <button className="page-link">Anterior</button>
+      </li>
+      <li className="page-item disabled">
+        <span className="page-link">1</span>
+      </li>
+      <li className="page-item disabled">
+        <button className="page-link">Próxima</button>
+      </li>
+    </ul>
+  </nav>
+</div>
+```
 
 &#128070; [Voltar ao Sumário](#Sumário)
