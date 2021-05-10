@@ -7,7 +7,6 @@ import { BASE_URL } from "utils/requests";
 
 const DataTable = () => {
   const [activePage, setActivePage] = useState(0);
-
   const [page, setPage] = useState<SalePage>({
     first: true,
     last: true,
@@ -30,9 +29,7 @@ const DataTable = () => {
 
   return (
     <>
-      <div className="container d-flex justify-content-center">
-        <Pagination page={page} onPagechange={changePage} />
-      </div>
+      <Pagination page={page} onPageChange={changePage} />
       <div className="table-responsive">
         <table className="table table-striped table-sm">
           <thead>
