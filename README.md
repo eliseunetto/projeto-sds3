@@ -8,14 +8,19 @@
 - [Tecnologias e ferramentas](#Tecnologias-e-ferramentas)
 - [Implantação e Deploy](#Implantação-e-Deploy)
 - [Guia do BACKEND](#Guia-do-Backend)
-  - [Passo 1: configuração de segurança](#Passo-1:-configuração-de-segurança)
-  - [Passo 2: criar as entidades e o seed do banco](#Passo-2:-criar-as-entidades-e-o-seed-do-banco)
-  - [Passo 3: Estruturar o projeto em camadas](#Passo-3:-Estruturar-o-projeto-em-camadas)
-  - [Passo 4: Busca paginada de vendas](#Passo-4:-Busca-paginada-de-vendas)
-  - [Passo 5: Buscas agrupadas (GROUP BY)](<#Passo-5:-Buscas-agrupadas-(GROUP-BY)>)
-  - [Passo 6: Validação no Postgres local](#Passo-6:-Validação-no-Postgres-local)
-  - [Passo 7: Implantação no Heroku](#Passo-7:-Implantação-no-Heroku)
+  - [Passo 1: configuração de segurança](#Passo-1-configuração-de-segurança)
+  - [Passo 2: criar as entidades e o seed do banco](#Passo-2-criar-as-entidades-e-o-seed-do-banco)
+  - [Passo 3: Estruturar o projeto em camadas](#Passo-3-Estruturar-o-projeto-em-camadas)
+  - [Passo 4: Busca paginada de vendas](#Passo-4-Busca-paginada-de-vendas)
+  - [Passo 5: Buscas agrupadas (GROUP BY)](<#Passo-5-Buscas-agrupadas-(GROUP-BY)>)
+  - [Passo 6: Validação no Postgres local](#Passo-6-Validação-no-Postgres-local)
+  - [Passo 7: Implantação no Heroku](#Passo-7-Implantação-no-Heroku)
 - [Guia do FRONTEND](#Guia-do-Frontend)
+  - [Passo 1: criar projetos](#Passo-1-criar-projetos)
+  - [Passo 2: "limpar" o projeto ReactJS](#Passo-2-"limpar"-o-projeto-ReactJS)
+  - [Passo 3: adicionar Bootstrap e CSS ao projeto](#Passo-3-adicionar-Bootstrap-e-CSS-ao-projeto)
+  - [Passo 4: adicionar componentes estáticos básicos](#Passo-4-adicionar-componentes-estáticos-básicos)
+  - [Passo 5: adicionar gráficos estáticos](#Passo-5-adicionar-gráficos-estáticos) -[Passo 6: implantação no Netlify](#Passo-6-implantação-no-Netlify)
 
 ## Objetivo
 
@@ -301,4 +306,205 @@ npx create-react-app frontend --template typescript
   - Security
 
 &#128070; [Voltar ao Sumário](#Sumário)
-Continua...
+
+## Passo 2: "limpar" o projeto ReactJS
+
+- Limpar projeto ReactJS / tsconfig.json
+- Arquivo \_redirects
+
+```
+/* /index.html 200
+```
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+## Passo 3: adicionar Bootstrap e CSS ao projeto
+
+### Bootstrap
+
+```
+yarn add bootstrap
+```
+
+```
+(index.tsx) import 'bootstrap/dist/css/bootstrap.css';
+```
+
+Assets e CSS
+
+```css
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+:root {
+  --color-primary: #ff8400;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Ubuntu", sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.bg-primary {
+  background-color: var(--color-primary) !important;
+}
+
+.text-primary {
+  color: var(--color-primary) !important;
+}
+```
+
+```tsx
+(index.tsx) import 'assets/css/styles.css';
+```
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+## Passo 4: adicionar componentes estáticos básicos
+
+### Navbar
+
+```tsx
+<div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-light border-bottom shadow-sm">
+  <div className="container">
+    <nav className="my-2 my-md-0 mr-md-3">
+      <img src={ImgDsDark} alt="DevSuperior" width="120" />
+    </nav>
+  </div>
+</div>
+```
+
+### Footer
+
+```tsx
+<footer className="footer mt-auto py-3 bg-dark">
+  <div className="container">
+    <p className="text-light">
+      App desenvolvido por{" "}
+      <a href="https://github.com/acenelio" target="_blank" rel="noreferrer">
+        Nelio Alves
+      </a>
+    </p>
+    <p className="text-light">
+      <small>
+        <strong>Semana Spring React</strong>
+        <br />
+        Evento promovido pela escola DevSuperior:{" "}
+        <a
+          href="https://instagram.com/devsuperior.ig"
+          target="_blank"
+          rel="noreferrer"
+        >
+          @devsuperior.ig
+        </a>
+      </small>
+    </p>
+  </div>
+</footer>
+```
+
+### DataTable
+
+```tsx
+<div className="table-responsive">
+  <table className="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>Vendedor</th>
+        <th>Clientes visitados</th>
+        <th>Negócios fechados</th>
+        <th>Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>22/04/2021</td>
+        <td>Barry Allen</td>
+        <td>34</td>
+        <td>25</td>
+        <td>15017.00</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+## Passo 5: adicionar gráficos estáticos
+
+### Apex Charts
+
+```
+yarn add apexcharts
+yarn add react-apexcharts
+```
+
+### BarChart
+
+```tsx
+const options = {
+  plotOptions: {
+    bar: {
+      horizontal: true,
+    },
+  },
+};
+
+const mockData = {
+  labels: {
+    categories: ["Anakin", "Barry Allen", "Kal-El", "Logan", "Padmé"],
+  },
+  series: [
+    {
+      name: "% Sucesso",
+      data: [43.6, 67.1, 67.7, 45.6, 71.1],
+    },
+  ],
+};
+```
+
+### DonutChart
+
+```tsx
+const mockData = {
+  series: [477138, 499928, 444867, 220426, 473088],
+  labels: ["Anakin", "Barry Allen", "Kal-El", "Logan", "Padmé"],
+};
+
+const options = {
+  legend: {
+    show: true,
+  },
+};
+```
+
+&#128070; [Voltar ao Sumário](#Sumário)
+
+## Passo 6: implantação no Netlify
+
+- Publicação no Netlify
+
+  - Comando: yarn build
+  - Diretório: build
+  - Deploy! (vai quebrar)
+  - Site settings -> Build & Deploy: (colocar o nome da sua \* subpasta do projeto frontend)
+  - Site settings -> Domain Management: (colocar o nome que você quiser)
+  - Deploys -> Trigger deploy
+
+  &#128070; [Voltar ao Sumário](#Sumário)
