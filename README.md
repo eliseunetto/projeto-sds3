@@ -1,5 +1,7 @@
 # Semana Spring React
 
+![Animação](https://user-images.githubusercontent.com/15930456/117609183-e21f0980-b135-11eb-8ebc-b448de3d25c2.gif)
+
 ## Sumário
 
 - [Objetivo](#Objetivo)
